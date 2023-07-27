@@ -44,5 +44,9 @@ func addPost(w http.ResponseWriter, r *http.Request) {
 	posts = append(posts, post)
 	w.WriteHeader(http.StatusOK)
 	result, err := json.Marshal(post)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte(`{"error":"Error marshalling the post array"}`))
+	}
 	w.Write(result)
 }
