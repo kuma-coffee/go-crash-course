@@ -1,5 +1,10 @@
 package main
 
+import (
+	"encoding/json"
+	"net/http"
+)
+
 type Post struct {
 	ID    int    `json:"id"`
 	Title string `json:"title"`
@@ -7,5 +12,22 @@ type Post struct {
 }
 
 var (
-	post []Post
+	posts []Post
 )
+
+func init() {
+	posts = []Post{
+		Post{ID: 1, Title: "Title 1", Text: "Text 1"},
+	}
+}
+
+func getPosts(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-type", "application/json")
+	result, err := json.Marshal(posts)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte(`{"error":"Error marshalling the post array"}`))
+	}
+	w.WriteHeader(http.StatusOK)
+	w.Write(result)
+}
