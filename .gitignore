@@ -19,3 +19,6 @@
 
 # Go workspace file
 go.work
+
+*.profile
+*pragmatic-reviews-e8d1d-firebase-adminsdk-4bxsm-6b0c976176.json
