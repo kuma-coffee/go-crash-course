@@ -8,7 +8,7 @@ import (
 
 	"github.com/kuma-coffee/go-crash-course/testing-rest-api-using-http-test-and-sqlite/controller"
 	router "github.com/kuma-coffee/go-crash-course/testing-rest-api-using-http-test-and-sqlite/http"
-	"github.com/kuma-coffee/go-crash-course/testing-rest-api-using-http-test-and-sqlite/repositorty"
+	repositorty "github.com/kuma-coffee/go-crash-course/testing-rest-api-using-http-test-and-sqlite/repository"
 	"github.com/kuma-coffee/go-crash-course/testing-rest-api-using-http-test-and-sqlite/service"
 	_ "github.com/mattn/go-sqlite3"
 )

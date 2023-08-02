@@ -2,7 +2,6 @@ package controller
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strconv"
 
@@ -53,6 +52,7 @@ func (*controller) AddPost(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 		json.NewEncoder(w).Encode(errors.ServiceError{Message: err.Error()})
 	}
+
 	result, err := postService.Create(&post)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
@@ -65,7 +65,6 @@ func (*controller) AddPost(w http.ResponseWriter, r *http.Request) {
 
 func (*controller) DeletePost(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Query().Get("id")
-	fmt.Println(id)
 	idInt, err := strconv.Atoi(id)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)

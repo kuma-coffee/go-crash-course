@@ -4,7 +4,7 @@ import (
 	"errors"
 
 	"github.com/kuma-coffee/go-crash-course/testing-rest-api-using-http-test-and-sqlite/entity"
-	"github.com/kuma-coffee/go-crash-course/testing-rest-api-using-http-test-and-sqlite/repositorty"
+	repositorty "github.com/kuma-coffee/go-crash-course/testing-rest-api-using-http-test-and-sqlite/repository"
 )
 
 var (

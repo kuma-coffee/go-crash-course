@@ -15,7 +15,8 @@ type sqliteRepo struct {
 func NewSqliteRepository(db *sql.DB) PostRepository {
 	return &sqliteRepo{db}
 }
-func (u *sqliteRepo) CreateTableSqlit(post *entity.Post) {
+
+func (u *sqliteRepo) CreateTableSqlite(post *entity.Post) {
 	statement, err := u.db.Prepare("CREATE TABLE IF NOT EXIST users (id INTEGER PRIMARY KEY, title VARCHAR(64), text VARCHAR(64))")
 	if err != nil {
 		log.Println("Error in creating table")
