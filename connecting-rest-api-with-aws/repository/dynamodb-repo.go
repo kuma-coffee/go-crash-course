@@ -1,7 +1,7 @@
 package repositorty
 
 import (
-	"fmt"
+	"math/rand"
 	"strconv"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -37,6 +37,9 @@ func (repo *dynamoDBRepo) Save(post *entity.Post) (*entity.Post, error) {
 	// Get a new DynamoDB client
 	dynamoDBClient := createDynamoDBClient()
 
+	// Create random ID
+	post.ID = rand.Int63n(100)
+
 	// Transform the post to map[string]*dynamodb.AttributeValue
 	attributeValue, err := dynamodbattribute.MarshalMap(post)
 	if err != nil {
@@ -70,7 +73,6 @@ func (repo *dynamoDBRepo) FindAll() ([]entity.Post, error) {
 
 	// Make the DynamoDB Query API call
 	result, err := dynamoDBClient.Scan(params)
-	fmt.Println(err)
 	if err != nil {
 		return nil, err
 	}
